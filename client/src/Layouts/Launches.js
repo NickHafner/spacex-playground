@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { makeStyles } from '@material-ui/core/styles'
 import { Query } from 'react-apollo';
 import { Typography, Grid } from '@material-ui/core';
-import Launch from '../Components/Launch';
+import LaunchCard from '../Components/LaunchCard';
 import MissionKey from '../Components/MissionKey';
 
 const LAUNCHES_QUERY = gql`
@@ -54,8 +54,7 @@ function Launches(){
                                 <React.Fragment>
                                     {
                                         data.launches.map(launch => {
-                                            console.log(launch)
-                                            return <Launch key={launch.flight_number} launch={launch} />
+                                            return <LaunchCard key={launch.flight_number} launch={launch} />
                                         })
                                     }
                                 </React.Fragment>

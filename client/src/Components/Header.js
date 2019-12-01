@@ -14,9 +14,9 @@ function Header(){
     
     return(
         <React.Fragment>
-            <Grid container>
+            <Grid container id='header'>
                 <Grid item xs={12}>
-                    <div id='header' className={classes.header}>
+                    <div className={classes.header}>
                         <img
                             src={logo}
                             alt="SpaceX"

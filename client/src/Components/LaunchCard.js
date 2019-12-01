@@ -1,7 +1,8 @@
 import React from 'react';
+import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Moment from 'react-moment';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
     }
 })
 
-function Launch({ launch }) {
+function LaunchCard({ launch }) {
     const classes = useStyles();
     const launchSuccessOrFailCss = !launch.launch_success ? classes.fail : classes.success;
 
@@ -48,10 +49,10 @@ function Launch({ launch }) {
                </Typography>
            </CardContent>
            <CardActions>
-               <Button className={classes.button} size='small'>Learn More</Button>
+               <Link to={`/launch/${launch.flight_number}`} className={classes.link} >Launch Details</Link>
            </CardActions>
         </Card>
     );
 }
 
-export default Launch;
+export default LaunchCard;
