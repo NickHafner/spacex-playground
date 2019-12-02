@@ -26,9 +26,20 @@ const useStyles = makeStyles({
     success: {
         color: '#22bb33'
     },
-    button: {
-        textTransform: 'none',
-        color: '#F4F4f4'   
+    actions: {
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    link: {
+        // textTransform: 'none',
+        paddingRight: '.5rem',
+        color: '#B19CD9',
+        '&:visited': {
+            color: '#ffcccb'
+        },
+        '&:hover': {
+            color: '#ffffba'
+        }
     }
 })
 
@@ -44,11 +55,11 @@ function LaunchCard({ launch }) {
                     {launch.mission_name}</span>
                </Typography>
                <Typography className={classes.content}>
-                Date: <Moment format='YYYY-MM-DD HH:mm'>
+                Date: <Moment format='DD-MM-YYYY'>
                     {launch.launch_date_local}</Moment>
                </Typography>
            </CardContent>
-           <CardActions>
+           <CardActions className={classes.actions}>
                <Link to={`/launch/${launch.flight_number}`} className={classes.link} >Launch Details</Link>
            </CardActions>
         </Card>

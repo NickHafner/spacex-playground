@@ -45,6 +45,7 @@ function Launches(){
                     <MissionKey />
                 </Grid>
             </Grid>
+            <Grid container>
             <Query query={LAUNCHES_QUERY}>
                 {
                     ({ loading, error, data }) => {
@@ -54,14 +55,19 @@ function Launches(){
                                 <React.Fragment>
                                     {
                                         data.launches.map(launch => {
-                                            return <LaunchCard key={launch.flight_number} launch={launch} />
+                                            return (
+                                            <Grid item xs={12} sm={6} md={4}>
+                                                <LaunchCard key={launch.flight_number} launch={launch} />
+                                            </Grid>
+                                            )
                                         })
-                                    }
-                                </React.Fragment>
+                                    } 
+                                    </React.Fragment>
                             )
                     }
                 }
             </Query>
+            </Grid>
         </div>
     )
 }
