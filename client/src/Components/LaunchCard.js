@@ -19,6 +19,7 @@ const useStyles = makeStyles({
         fontSize: 24
     },
     content:{
+        minHeight: '7rem'
     },
     fail: {
         color: '#bb2124'
@@ -31,8 +32,8 @@ const useStyles = makeStyles({
         justifyContent: 'flex-end'
     },
     link: {
-        // textTransform: 'none',
         paddingRight: '.5rem',
+        paddingBottom: '.5rem',
         color: '#B19CD9',
         '&:visited': {
             color: '#ffcccb'
@@ -49,12 +50,12 @@ function LaunchCard({ launch }) {
 
     return (
        <Card className={classes.card} >
-           <CardContent>
+           <CardContent className={classes.content}>
                <Typography className={classes.title}>
                 Mission: <span className={launchSuccessOrFailCss}>
                     {launch.mission_name}</span>
                </Typography>
-               <Typography className={classes.content}>
+               <Typography>
                 Date: <Moment format='DD-MM-YYYY'>
                     {launch.launch_date_local}</Moment>
                </Typography>

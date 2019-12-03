@@ -19,7 +19,7 @@ function Header(){
                     <div className={classes.header}>
                         <img
                             src={logo}
-                            alt="SpaceX"
+                            alt="SpaceX Logo"
                             style={{ width: 300, display: 'block', margin: 'auto' }}
                         />
                     </div>
