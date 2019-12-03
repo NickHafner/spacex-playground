@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         fontSize: 24
     },
     content:{
-        minHeight: '7rem'
+        minHeight: '6rem'
     },
     fail: {
         color: '#bb2124'
