@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
+import { UserContext } from '../contexts/UserContext';
 
 const useStyles = makeStyles({
     card: {
@@ -47,6 +48,7 @@ const useStyles = makeStyles({
 function LaunchCard({ launch }) {
     const classes = useStyles();
     const launchSuccessOrFailCss = !launch.launch_success ? classes.fail : classes.success;
+    const [ userState, dispatch ] = useContext(UserContext)
 
     return (
        <Card className={classes.card} >

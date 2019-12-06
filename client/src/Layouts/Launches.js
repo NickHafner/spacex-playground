@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import gql from 'graphql-tag';
 import { makeStyles } from '@material-ui/core/styles'
 import { Query } from 'react-apollo';
 import { Typography, Grid } from '@material-ui/core';
 import LaunchCard from '../Components/LaunchCard';
 import MissionKey from '../Components/MissionKey';
+import { UserContext } from '../contexts/UserContext';
 
 const LAUNCHES_QUERY = gql`
 query LaunchesQuery {
@@ -32,6 +33,12 @@ const useStyles = makeStyles({
 
 function Launches(){
     const classes = useStyles();
+    const [ userState, dispatch ] = useContext(UserContext)
+
+    useEffect(() => {
+        console.log(`Current user: ${userState.username}`)
+        console.log(`User favorite launches: ${userState.username}`)
+    }, [userState.favoriteLaunches])
 
     return (
         <div className={classes.container}>

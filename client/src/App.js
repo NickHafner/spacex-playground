@@ -9,30 +9,30 @@ import Launch from './Layouts/Launch';
 import Login from './Layouts/Login';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
+import { UserProvider } from './contexts/UserContext';
+import { UserReducer } from './contexts/UserReducer';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql'
 });
 
-const theme = createMuiTheme({
+const theme = createMuiTheme({ });
 
-});
-
-class App extends Component {
-  render() {
+const App = () => {
     return (
       <ThemeProvider theme={theme}>
         <ApolloProvider client={client}>
-          <Router>
-            <Header />
-            <Route exact path='/' component={Login}/>
-            <Route exact path='/launches' component={Launches}/>
-            <Route exact path='/launch/:flight_number' component={Launch} />
-          </Router>
+          <UserProvider reducer={UserReducer}>
+            <Router>
+              <Header />
+              <Route exact path='/' component={Login}/>
+              <Route exact path='/launches' component={Launches}/>
+              <Route exact path='/launch/:flight_number' component={Launch} />
+            </Router>
+          </UserProvider>
         </ApolloProvider>
       </ThemeProvider>
     );
-  }
 }
 
 export default App;
