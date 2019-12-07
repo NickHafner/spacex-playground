@@ -24,6 +24,7 @@ const useStyles = makeStyles({
         alignContent: 'end',
         paddingRight: '.5rem',
         paddingBottom: '.5rem',
+        bottom: '0',
         color: '#B19CD9',
         '&:visited': {
             color: '#ffcccb'
@@ -83,7 +84,7 @@ function FavoriteLaunches(){
                     userState.favoriteLaunches.map(launch => {
                         return (
                         <Grid item xs={12} sm={6} md={4}>
-                            <LaunchCard key={launch.flight_number} launch={launch} onFavorites={true} />
+                            <LaunchCard key={launch.flight_number} launch={launch}/>
                         </Grid>
                         )
                     })

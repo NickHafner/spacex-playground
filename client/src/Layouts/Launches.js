@@ -36,6 +36,7 @@ const useStyles = makeStyles({
         alignContent: 'end',
         paddingRight: '.5rem',
         paddingBottom: '.5rem',
+        bottom: '0',
         color: '#B19CD9',
         '&:visited': {
             color: '#ffcccb'
@@ -56,7 +57,7 @@ function Launches(){
             history.push('/');
         }
     }, [userState.validated])
-    console.log(userState.username)
+
     return (
         <div className={classes.container}>
             <Grid container>
@@ -84,12 +85,12 @@ function Launches(){
                                         data.launches.map(launch => {
                                             return (
                                             <Grid item xs={12} sm={6} md={4}>
-                                                <LaunchCard onFavorites={false} key={launch.flight_number} launch={launch} />
+                                                <LaunchCard key={launch.flight_number} launch={launch} />
                                             </Grid>
                                             )
                                         })
                                     } 
-                                    </React.Fragment>
+                                </React.Fragment>
                             )
                     }
                 }

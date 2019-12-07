@@ -10,6 +10,7 @@ import { UserContext } from '../contexts/UserContext';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 import { ADD_FAVORITE, REMOVE_FAVORITE } from '../contexts/UserReducer';
+import { isInFavorites } from '../utils/LaunchUtil';
 
 const useStyles = makeStyles({
     card: {
@@ -51,11 +52,11 @@ const useStyles = makeStyles({
     }
 })
 
-function LaunchCard({ launch, onFavorites }) {
+function LaunchCard({ launch }) {
     const classes = useStyles();
     const launchSuccessOrFailCss = !launch.launch_success ? classes.fail : classes.success;
     const [ userState, dispatch ] = useContext(UserContext)
-    const [favorite, setFavorite] = useState(onFavorites);
+    const [favorite, setFavorite] = useState(isInFavorites(userState.favoriteLaunches, launch.flight_number));
 
     const favoriteLaunch = () => {
         setFavorite(true)
