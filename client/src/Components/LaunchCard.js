@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
@@ -6,8 +6,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
 import { UserContext } from '../contexts/UserContext';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@material-ui/icons/Star';
+import { ADD_FAVORITE } from '../contexts/UserReducer';
 
 const useStyles = makeStyles({
     card: {
@@ -42,6 +44,10 @@ const useStyles = makeStyles({
         '&:hover': {
             color: '#ffffba'
         }
+    },
+    star: {
+        paddingRight: '.5rem',
+        paddingBottom: '.5rem'
     }
 })
 
@@ -49,7 +55,17 @@ function LaunchCard({ launch }) {
     const classes = useStyles();
     const launchSuccessOrFailCss = !launch.launch_success ? classes.fail : classes.success;
     const [ userState, dispatch ] = useContext(UserContext)
+    const [favorite, setFavorite] = useState(false);
 
+    const favoriteLaunch = () => {
+        setFavorite(true)
+        dispatch({ type: ADD_FAVORITE, launch: launch})
+    }
+
+    const unFavoriteLaunch = () => {
+        setFavorite(false)
+    }
+    
     return (
        <Card className={classes.card} >
            <CardContent className={classes.content}>
@@ -64,6 +80,8 @@ function LaunchCard({ launch }) {
            </CardContent>
            <CardActions className={classes.actions}>
                <Link to={`/launch/${launch.flight_number}`} className={classes.link} >Launch Details</Link>
+               {favorite ? <StarIcon onClick={unFavoriteLaunch} className={classes.star} /> : 
+                    <StarBorderIcon onClick={favoriteLaunch} className={classes.star} />}           
            </CardActions>
         </Card>
     );

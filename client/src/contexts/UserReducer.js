@@ -8,11 +8,13 @@ const logout = (state) => {
 }
 
 const login = (state, username) => {
-    return {...state, username: username}
+    return {...state, username: username, validated: true}
 }
 
-const addFavorite = (favoriteToAdd, favorites) => {
-
+const addFavorite = (state, favorite) => {
+    const newFavs = state.favoriteLaunches ? [...state.favoriteLaunches, favorite] : [ favorite ]
+    console.log(newFavs)
+    return {...state, favoriteLaunches : newFavs}
 }
 
 const removeFavorite = (favoriteToRemove, id) => {
@@ -22,9 +24,9 @@ const removeFavorite = (favoriteToRemove, id) => {
 export const UserReducer = (state, action) => {
     switch(action.type) {
         case ADD_FAVORITE:
-            return removeFavorite(state.favoriteLaunches, action.launch);   
+            return addFavorite(state, action.launch);   
         case REMOVE_FAVORITE:
-            return state.favoriteLaunches.filter(launch => launch.id !== action.launchId);        
+            return {...state, favoriteLaunches: state.favoriteLaunches.filter(launch => launch.id !== action.launchId)};        
         case LOGIN:
             return login(state, action.username);       
         case LOGOUT:

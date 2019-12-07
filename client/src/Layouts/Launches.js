@@ -38,7 +38,7 @@ function Launches(){
     useEffect(() => {
         console.log(`Current user: ${userState.username}`)
         console.log(`User favorite launches: ${userState.username}`)
-    }, [userState.favoriteLaunches])
+    }, [userState.username])
 
     return (
         <div className={classes.container}>
