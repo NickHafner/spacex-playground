@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { UserContext } from '../contexts/UserContext';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
-import { ADD_FAVORITE } from '../contexts/UserReducer';
+import { ADD_FAVORITE, REMOVE_FAVORITE } from '../contexts/UserReducer';
 
 const useStyles = makeStyles({
     card: {
@@ -64,6 +64,7 @@ function LaunchCard({ launch }) {
 
     const unFavoriteLaunch = () => {
         setFavorite(false)
+        dispatch({ type: REMOVE_FAVORITE, flight_number: launch.flight_number})
     }
     
     return (

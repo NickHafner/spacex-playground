@@ -6,6 +6,7 @@ import { Typography, Grid } from '@material-ui/core';
 import LaunchCard from '../Components/LaunchCard';
 import MissionKey from '../Components/MissionKey';
 import { UserContext } from '../contexts/UserContext';
+import { useHistory } from 'react-router-dom';
 
 const LAUNCHES_QUERY = gql`
 query LaunchesQuery {
@@ -34,11 +35,13 @@ const useStyles = makeStyles({
 function Launches(){
     const classes = useStyles();
     const [ userState, dispatch ] = useContext(UserContext)
-
+    const history = useHistory();
+    
     useEffect(() => {
-        console.log(`Current user: ${userState.username}`)
-        console.log(`User favorite launches: ${userState.username}`)
-    }, [userState.username])
+        if(!userState.validated){
+            history.push('/');
+        }
+    }, [userState.validated])
 
     return (
         <div className={classes.container}>
