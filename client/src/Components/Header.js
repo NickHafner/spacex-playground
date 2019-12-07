@@ -22,7 +22,7 @@ const useStyles = makeStyles({
         color: '#F4F4f4',  
         position: 'relative',
         textAlign: 'center',
-        top: '20%'
+        top: '30%'
     }
 });
 

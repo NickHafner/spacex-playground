@@ -11,6 +11,7 @@ import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { UserProvider } from './contexts/UserContext';
 import { UserReducer } from './contexts/UserReducer';
+import FavoriteLaunches from './Layouts/FavoriteLaunches';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql'
@@ -27,6 +28,7 @@ const App = () => {
               <Header />
               <Route exact path='/' component={Login}/>
               <Route exact path='/launches' component={Launches}/>
+              <Route exact path='/:user/favorites' component={FavoriteLaunches}/>
               <Route exact path='/launch/:flight_number' component={Launch} />
             </Router>
           </UserProvider>

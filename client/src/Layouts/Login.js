@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState, useReducer } from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles'
-import { FormControl, InputLabel, TextField, Button, Grid } from "@material-ui/core";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { TextField, Button, Grid } from "@material-ui/core";
 import { UserContext } from "../contexts/UserContext";
-import { UserReducer, LOGIN } from '../contexts/UserReducer';
+import { LOGIN } from '../contexts/UserReducer';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({

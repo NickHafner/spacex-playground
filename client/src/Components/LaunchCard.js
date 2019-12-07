@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
@@ -51,11 +51,11 @@ const useStyles = makeStyles({
     }
 })
 
-function LaunchCard({ launch }) {
+function LaunchCard({ launch, onFavorites }) {
     const classes = useStyles();
     const launchSuccessOrFailCss = !launch.launch_success ? classes.fail : classes.success;
     const [ userState, dispatch ] = useContext(UserContext)
-    const [favorite, setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState(onFavorites);
 
     const favoriteLaunch = () => {
         setFavorite(true)
