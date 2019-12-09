@@ -4,8 +4,8 @@ import { Typography, Grid } from '@material-ui/core';
 import LaunchCard from '../Components/LaunchCard';
 import MissionKey from '../Components/MissionKey';
 import { UserContext } from '../contexts/UserContext';
-import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import useProctectPage from '../Hooks/useProtectPage';
 
 
 const useStyles = makeStyles({
@@ -37,16 +37,16 @@ const useStyles = makeStyles({
 
 function FavoriteLaunches(){
     const classes = useStyles();
-    const [ userState, dispatch ] = useContext(UserContext)
-    const history = useHistory();
-    
-    useEffect(() => {
-        if(!userState.validated){
-            history.push('/');
-        }
-    }, [userState.validated])
+    const [ userState, dispatch ] = useContext(UserContext);
+    useProctectPage();
 
-    console.log(userState)
+    useEffect(() => {
+        console.log('username');
+    }, [userState.username])
+    useEffect(() => {
+        console.log('favorite');
+    }, [userState.favoriteLaunches])
+
     if(userState.favoriteLaunches.length < 1) {
         return (
             <div className={classes.container}>

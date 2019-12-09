@@ -8,6 +8,7 @@ import MissionKey from '../Components/MissionKey';
 import { UserContext } from '../contexts/UserContext';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import useProctectPage from '../Hooks/useProtectPage';
 
 const LAUNCHES_QUERY = gql`
 query LaunchesQuery {
@@ -51,12 +52,12 @@ function Launches(){
     const classes = useStyles();
     const [ userState, dispatch ] = useContext(UserContext)
     const history = useHistory();
-
-    useEffect(() => {
-        if(!userState.validated){
-            history.push('/');
-        }
-    }, [userState.validated])
+    useProctectPage();
+    // useEffect(() => {
+    //     if(!userState.validated){
+    //         history.push('/');
+    //     }
+    // }, [userState.validated])
 
     return (
         <div className={classes.container}>
